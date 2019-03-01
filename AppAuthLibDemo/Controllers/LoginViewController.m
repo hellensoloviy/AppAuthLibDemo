@@ -7,7 +7,7 @@
 //
 
 #import "LoginViewController.h"
-#import <ProgressHUD/ProgressHUD.h>
+#import <SVProgressHUD/SVProgressHUD.h>
 
 const NSString* segueIdentifier = @"loginCompleteSegue";
 
@@ -19,13 +19,23 @@ const NSString* segueIdentifier = @"loginCompleteSegue";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
-- (IBAction)loginButtonAction:(UIButton *)sender {
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear: animated];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear: animated];
     
 }
 
+#pragma mark - IBActions
+- (IBAction)loginButtonAction:(UIButton *)sender {
+    NSLog(@"loginButtonTapped");
+    
+    SVpro
+}
 
 
 @end

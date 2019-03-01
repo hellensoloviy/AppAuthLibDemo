@@ -3,7 +3,7 @@ platform :ios, '11.0'
 target 'AppAuthLibDemo' do
 
   pod 'AppAuth'
-  pod 'ProgressHUD'
+  pod 'SVProgressHUD'
 
   target 'AppAuthLibDemoTests' do
     inherit! :search_paths

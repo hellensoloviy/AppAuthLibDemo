@@ -10,34 +10,47 @@
 #import "RequestsService.h"
 #import "AppDelegate.h"
 
-const NSString *kClientID = @"";
-const NSString *KRedirectURI = @"";
+static NSString * const kClientID = @"";
+static NSString * const KRedirectURI = @"";
+
+static NSString * const RequestsServiceAutorizationDidFailNotification = @"RequestsServiceAutorizationDidFailNotification";
+static const NSString * const RequestsServiceAutorizationDidEndNotification = @"RequestsServiceAutorizationDidEndNotification";
 
 @interface RequestsService()
 
 // property of the containing class
-@property(nonatomic, strong, nullable) OIDAuthState *authState;
+@property (nonatomic, strong, nullable) OIDAuthState *authState;
+
+@property (nonatomic, nullable) UIViewController *viewControllerToPresentOn;
 
 @end
 
 @implementation RequestsService
 
-
-
-- (void) performAuthFlow {
+- (void) performAuthFlowOnViewController: (UIViewController *) viewControllerToPresentOn {
+    self.viewControllerToPresentOn = viewControllerToPresentOn;
+    NSURL *discoveryURL = [[NSURL alloc] initWithString: @""];
     
-    
+    [OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL: discoveryURL completion:^(OIDServiceConfiguration * _Nullable configuration, NSError * _Nullable error) {
+        if (configuration != nil) {
+            [self buildAndPerformAuthorizationRequestWithConfiguration: configuration];
+        } else {
+            [NSNotificationCenter.defaultCenter postNotificationName: RequestsServiceAutorizationDidFailNotification object: nil];
+        }
+    }];
     
 }
 
 - (void) buildAndPerformAuthorizationRequestWithConfiguration: (OIDServiceConfiguration *) configuration {
+    NSURL* redirectURL = [[NSURL alloc] initWithString: KRedirectURI];
+    
     // builds authentication request
     OIDAuthorizationRequest *request =
     [[OIDAuthorizationRequest alloc] initWithConfiguration:configuration
                                                   clientId: kClientID
                                                     scopes:@[OIDScopeOpenID,
                                                              OIDScopeProfile]
-                                               redirectURL:KRedirectURI
+                                               redirectURL: redirectURL
                                               responseType:OIDResponseTypeCode
                                       additionalParameters:nil];
     
@@ -45,7 +58,7 @@ const NSString *KRedirectURI = @"";
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     appDelegate.currentAuthorizationFlow = [OIDAuthState authStateByPresentingAuthorizationRequest:request
-                                   presentingViewController:self
+                                   presentingViewController: self.viewControllerToPresentOn
                                                    callback:^(OIDAuthState *_Nullable authState,
                                                               NSError *_Nullable error) {
                                                        if (authState) {
