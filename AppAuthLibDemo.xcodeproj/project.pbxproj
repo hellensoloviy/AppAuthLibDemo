@@ -10,7 +10,6 @@
 		9BE62A3522293E6D000205B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE62A3422293E6D000205B6 /* AppDelegate.m */; };
 		9BE62A3822293E6D000205B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE62A3722293E6D000205B6 /* ViewController.m */; };
 		9BE62A3B22293E6D000205B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE62A3922293E6D000205B6 /* Main.storyboard */; };
-		9BE62A3E22293E6D000205B6 /* AppAuthLibDemo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9BE62A3C22293E6D000205B6 /* AppAuthLibDemo.xcdatamodeld */; };
 		9BE62A4022293E6E000205B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BE62A3F22293E6E000205B6 /* Assets.xcassets */; };
 		9BE62A4322293E6E000205B6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BE62A4122293E6E000205B6 /* LaunchScreen.storyboard */; };
 		9BE62A4622293E6E000205B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BE62A4522293E6E000205B6 /* main.m */; };
@@ -34,7 +33,6 @@
 		9BE62A3622293E6D000205B6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9BE62A3722293E6D000205B6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9BE62A3A22293E6D000205B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9BE62A3D22293E6D000205B6 /* AppAuthLibDemo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AppAuthLibDemo.xcdatamodel; sourceTree = "<group>"; };
 		9BE62A3F22293E6E000205B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BE62A4222293E6E000205B6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9BE62A4422293E6E000205B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -92,7 +90,6 @@
 				9BE62A4122293E6E000205B6 /* LaunchScreen.storyboard */,
 				9BE62A4422293E6E000205B6 /* Info.plist */,
 				9BE62A4522293E6E000205B6 /* main.m */,
-				9BE62A3C22293E6D000205B6 /* AppAuthLibDemo.xcdatamodeld */,
 			);
 			path = AppAuthLibDemo;
 			sourceTree = "<group>";
@@ -207,7 +204,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				9BE62A3822293E6D000205B6 /* ViewController.m in Sources */,
-				9BE62A3E22293E6D000205B6 /* AppAuthLibDemo.xcdatamodeld in Sources */,
 				9BE62A4622293E6E000205B6 /* main.m in Sources */,
 				9BE62A3522293E6D000205B6 /* AppDelegate.m in Sources */,
 			);
@@ -466,19 +462,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		9BE62A3C22293E6D000205B6 /* AppAuthLibDemo.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				9BE62A3D22293E6D000205B6 /* AppAuthLibDemo.xcdatamodel */,
-			);
-			currentVersion = 9BE62A3D22293E6D000205B6 /* AppAuthLibDemo.xcdatamodel */;
-			path = AppAuthLibDemo.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 9BE62A2822293E6D000205B6 /* Project object */;
 }
