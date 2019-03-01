@@ -1,0 +1,20 @@
+PODS:
+  - AppAuth (0.95.0)
+  - ProgressHUD (2.60)
+
+DEPENDENCIES:
+  - AppAuth
+  - ProgressHUD
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AppAuth
+    - ProgressHUD
+
+SPEC CHECKSUMS:
+  AppAuth: 137f6bb6fc9dfbaf2cf9f6fcff1d336ff0163bc6
+  ProgressHUD: 4e4efbaf4f5de8bd32e0c4c3b6644a90ea1a8c3e
+
+PODFILE CHECKSUM: 18cdd97731081c85336fcb7c1cfb2e380f60bfe9
+
+COCOAPODS: 1.6.0

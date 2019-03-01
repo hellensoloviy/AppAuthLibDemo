@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <AppAuth/AppAuth.h>
 
 @interface AppDelegate ()
 
@@ -46,6 +47,24 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     // Saves changes in the application's managed object context before the application terminates.
+}
+
+
+#pragma mark - Handling the Redirect
+
+- (BOOL)application:(UIApplication *)app
+            openURL:(NSURL *)url
+            options:(NSDictionary<NSString *, id> *)options {
+    
+    // Sends the URL to the current authorization flow (if any) which will
+    // process it if it relates to an authorization response.
+    if ([_currentAuthorizationFlow resumeExternalUserAgentFlowWithURL:url]) {
+        _currentAuthorizationFlow = nil;
+        return YES;
+    }
+    
+    // Your additional URL handling (if any) goes here.
+    return NO;
 }
 
 
