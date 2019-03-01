@@ -7,7 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import <AppAuth/AppAuth.h>
 
 @interface AppDelegate ()
 

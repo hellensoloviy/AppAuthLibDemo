@@ -10,7 +10,6 @@
 #import "RequestsService.h"
 #import "AppDelegate.h"
 
-
 const NSString *kClientID = @"";
 const NSString *KRedirectURI = @"";
 

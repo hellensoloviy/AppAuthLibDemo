@@ -5,6 +5,9 @@
       location = "group:AppAuthLibDemo.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:/Users/hellensoloviy/Developer/objective-c/AppAuthLibDemo/Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>

@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreData/CoreData.h>
+#import <AppAuth/AppAuth.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-@property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) UIWindow * _Nullable window;
 
 // property of the app's AppDelegate
 @property(nonatomic, strong, nullable) id<OIDExternalUserAgentSession> currentAuthorizationFlow;
