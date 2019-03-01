@@ -8,5 +8,7 @@
 
 @import Foundation;
 
+static NSString * const RequestsServiceAutorizationDidFailNotification = @"RequestsServiceAutorizationDidFailNotification";
+static NSString * const RequestsServiceAutorizationDidEndNotification = @"RequestsServiceAutorizationDidEndNotification";
 
 

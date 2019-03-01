@@ -9,12 +9,10 @@
 #import <AppAuth/AppAuth.h>
 #import "RequestsService.h"
 #import "AppDelegate.h"
+#import "Constants.h"
 
-static NSString * const kClientID = @"";
-static NSString * const KRedirectURI = @"";
-
-static NSString * const RequestsServiceAutorizationDidFailNotification = @"RequestsServiceAutorizationDidFailNotification";
-static const NSString * const RequestsServiceAutorizationDidEndNotification = @"RequestsServiceAutorizationDidEndNotification";
+static NSString * const kClientID = @"3e1745f6-e090-49c0-ba86-a4053506c686";
+static NSString * const KRedirectURI = @"https://login.microsoftonline.com/halsdev.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_SignUpInAPI";
 
 @interface RequestsService()
 
@@ -29,7 +27,7 @@ static const NSString * const RequestsServiceAutorizationDidEndNotification = @"
 
 - (void) performAuthFlowOnViewController: (UIViewController *) viewControllerToPresentOn {
     self.viewControllerToPresentOn = viewControllerToPresentOn;
-    NSURL *discoveryURL = [[NSURL alloc] initWithString: @""];
+    NSURL *discoveryURL = [[NSURL alloc] initWithString: @"https://login.microsoftonline.com/halsdev.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=B2C_1_SignUpInAPI"];
     
     [OIDAuthorizationService discoverServiceConfigurationForDiscoveryURL: discoveryURL completion:^(OIDServiceConfiguration * _Nullable configuration, NSError * _Nullable error) {
         if (configuration != nil) {
@@ -42,7 +40,7 @@ static const NSString * const RequestsServiceAutorizationDidEndNotification = @"
 }
 
 - (void) buildAndPerformAuthorizationRequestWithConfiguration: (OIDServiceConfiguration *) configuration {
-    NSURL* redirectURL = [[NSURL alloc] initWithString: KRedirectURI];
+    NSURL* redirectURL = [[NSURL alloc] initWithString: @"authapplibdemo.app://oauth/redirect"];
     
     // builds authentication request
     OIDAuthorizationRequest *request =
@@ -51,8 +49,8 @@ static const NSString * const RequestsServiceAutorizationDidEndNotification = @"
                                                     scopes:@[OIDScopeOpenID,
                                                              OIDScopeProfile]
                                                redirectURL: redirectURL
-                                              responseType:OIDResponseTypeCode
-                                      additionalParameters:nil];
+                                              responseType: OIDResponseTypeCode
+                                      additionalParameters: @{@"p": @"B2C_1_SignUpInAPI"}];
     
     // performs authentication request
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -69,7 +67,24 @@ static const NSString * const RequestsServiceAutorizationDidEndNotification = @"
                                                            NSLog(@"Authorization error: %@", [error localizedDescription]);
                                                            [self setAuthState:nil];
                                                        }
+                                                       
+                                                       [self processAuthorizationState];
                                                    }];
+    
+    
+}
+
+
+- (void) processAuthorizationState {
+    if (self.authState == nil) {
+        [NSNotificationCenter.defaultCenter postNotificationName: RequestsServiceAutorizationDidFailNotification object: nil];
+        NSLog(@"_____ DidFail :(");
+        
+    } else {
+        [NSNotificationCenter.defaultCenter postNotificationName: RequestsServiceAutorizationDidEndNotification object: @(YES)];
+        NSLog(@"_____ DidSuccess :(");
+    }
+    
 }
 
 @end

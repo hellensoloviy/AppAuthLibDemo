@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface RequestsService : NSObject
 
+- (void) performAuthFlowOnViewController: (UIViewController *) viewControllerToPresentOn;
+
+
 @end
 
 NS_ASSUME_NONNULL_END

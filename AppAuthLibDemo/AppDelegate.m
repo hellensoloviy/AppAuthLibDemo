@@ -57,7 +57,7 @@
     
     // Sends the URL to the current authorization flow (if any) which will
     // process it if it relates to an authorization response.
-    if ([_currentAuthorizationFlow resumeExternalUserAgentFlowWithURL:url]) {
+    if ([_currentAuthorizationFlow resumeExternalUserAgentFlowWithURL: url]) {
         _currentAuthorizationFlow = nil;
         return YES;
     }

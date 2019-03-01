@@ -21,7 +21,7 @@
     
 }
 
-- (IBAction)logoutButtonAction:(UIButton *)sender {
+- (IBAction) logoutButtonAction:(UIButton *)sender {
     
     
 }
